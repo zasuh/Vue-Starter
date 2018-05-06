@@ -126,5 +126,21 @@
     })
 
     </script>
+
+    <!-- Template syntax -->
+    <span>Message: {{ msg }}</span>
+
+    <div v-bind:id="dynamicId"></div>
+    <!-- Mustaches or {{}} can't be used inside HTML attributes -->
+
+    {{ message.split('').reverse().join('') }}
+    <div v-bind:id="'list-' + id"></div>
+    <!-- Vue supports JS expressions inside all data bindings-->
+
+    <!-- this is a statement, not an expression: -->
+    {{ var a = 1 }}
+
+    <!-- flow control won't work either, use ternary expressions -->
+    {{ if (ok) { return message } }}
 </body>
 </html>
