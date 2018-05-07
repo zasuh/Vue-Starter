@@ -1,0 +1,15 @@
+<!-- Dynamicly toggling classes -->
+<div v-bind:class="{ active: isActive }"></div>
+
+<div class="static"
+     v-bind:class="{ active: isActive, 'text-danger': hasError }">
+</div>
+
+<script>
+    var vm = new Vue({
+        data: {
+        isActive: true,
+        hasError: false
+    }
+    })
+</script>
