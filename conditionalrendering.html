@@ -1,0 +1,66 @@
+<!-- Handlebars template -->
+{{#if ok}}
+    <h1>Yes</h1>
+{{/if}}
+
+<!-- Vue code which does the same thing -->
+<h1 v-if="ok">Yes</h1>
+
+<!-- Using v-if on multiple elements using an invisible element -->
+<template v-if="ok">
+    <h1>Title</h1>
+    <p>Paragraph 1</p>
+    <p>Paragraph 2</p>
+</template>
+
+<!-- Else statement -->
+<div v-if="Math.random() > 0.5">
+    Now you see me
+</div>
+<div v-else>
+Now you don't
+</div>
+
+<!-- Else/if statement -->
+<div v-if="type === 'A'">
+    A
+</div>
+<div v-else-if="type === 'B'">
+    B
+</div>
+<div v-else-if="type === 'C'">
+    C
+</div>
+<div v-else>
+    Not A/B/C
+</div>
+
+<!-- Controlling reusable elements with keys -->
+<!-- Rerender without key -->
+<template v-if="loginType === 'username'">
+    <label>Username</label>
+    <input placeholder="Enter your username">
+</template>
+<template v-else>
+    <label>Email</label>
+    <input placeholder="Enter your email address">
+</template>
+
+<!-- Rerender with key -->
+<template v-if="loginType === 'username'">
+    <label>Username</label>
+    <input placeholder="Enter your username" key="username-input">
+</template>
+<template v-else>
+    <label>Email</label>
+    <input placeholder="Enter your email address" key="email-input">
+</template>
+
+<!-- v-show -->
+<h1 v-show="ok">Hello!</h1>
+
+<!--
+    Prefer v-show if you need to toggle something very 
+    often, and prefer v-if if the condition is unlikely to 
+    change at runtime.
+-->
