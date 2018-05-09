@@ -1,0 +1,91 @@
+<ul id="example-1">
+    <li v-for="item in items">
+        {{ item.message }}
+    </li>
+</ul>
+
+<ul id="example-2">
+    <li v-for="(item, index) in items">
+        {{ parentMessage }} - {{ index }} - {{ item.message}}
+    </li>
+</ul>
+
+<ul id="v-for-object" class="demo">
+    <li v-for="value in object">
+      {{ value }}
+    </li>
+</ul>
+
+<ul id="sorted">
+    <li v-for="n in evenNumbers">
+        {{ n }}
+    </li>
+</ul>
+
+<!-- v-for with a Range -->
+<div>
+    <span v-for="n in 10">{{ n }}</span>
+</div>
+
+<!-- v-for in a template -->
+<ul>
+    <template v-for="item in items">
+        <li>
+            {{ item.msg }}
+        </li>
+        <li class="divider"></li>
+    </template>
+</ul>
+
+<!-- On the same node v-for has a higher priority than v-if -->
+<li v-for"todo in todos" v-if="!todo.isComplete">
+    {{ todo }}
+</li>
+
+<script>
+    var example1 = new Vue ({
+        el: "#example-1",
+        data: {
+            items: [
+                { message: "Foo" },
+                { message: "Bar" }
+            ]
+        }
+    })
+
+    var example2 = new Vue ({
+        el: "#example-2",
+        data: {
+            parentMessage: "Parent",
+            items: [
+                { message: "Foo"},
+                { message: "Bar"}
+            ]
+        }
+    })
+
+    new Vue({
+        el: "#v-for-object",
+        data: {
+            object: {
+                firstName: "John",
+                lastName: "Doe",
+                age: 30
+            }
+        }
+    })
+
+    var sorted = new Vue ({
+        el: "#sorted",
+        data: {
+            numbers: [1, 2, 3, 4, 5]
+        },
+        computed: {
+            evenNumbers: function () {
+                return this.numbers.filter(function (number) {
+                    return number % 2 === 0;
+                });
+            }
+        }
+    })
+</script>
