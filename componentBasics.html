@@ -18,6 +18,11 @@
     </blog-post>
 </div>
 
+<div class="blog-post">
+    <h3>{{ post.title }}</h3>
+    <div v-html="post-content"></div>
+</div>
+
 <script>
     //Defining a new Vue component
     Vue.component("button-counter", {
@@ -46,5 +51,15 @@
                 { id: 3, title: 'Why Vue is so much fun'},
             ]
         }
+    })
+
+    //Alert box
+    Vue.component('alert-box', {
+        template: `
+        <div class="demo-alert-box">
+            <strong>Error!</strong>
+            <slot></slot>
+        </div>
+        `
     })
 </script>
