@@ -1,0 +1,12 @@
+<div id="app">
+    <component-a></component-a>
+    <component-b></component-b>
+    <component-c></component-c>
+</div>
+<!-- all three of these components will also be available inside each other.-->
+
+<script>
+    Vue.component('component-a', {/*...*/})
+    Vue.component('component-b', {/*...*/})
+    Vue.component('component-c', {/*...*/})
+</script>
