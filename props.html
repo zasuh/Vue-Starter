@@ -1,0 +1,66 @@
+<blog-post post-title="hello!"></blog-post>
+
+<script>
+    Vue.component('blog-post', {
+        // camelCase in JavaScript
+        props: ['postTitle'],
+        template: '<h3>{{ postTitle }}</h3>'
+    })
+
+    // Prop validation
+    Vue.component('my-component', {
+        props: {
+            // Basic type checking
+            propA: Number,
+
+            // Multiple possible types
+            propB: [String, Number],
+
+            // Must be a string
+            propC: {
+                type: String,
+                required: true
+            },
+
+            // Integer with default value
+            propD: {
+                type: Number,
+                default: 5
+            },
+
+            // Object with default value
+            propE: {
+                type: Object,
+                default: function () {
+                    return {
+                        message: 'Hello'
+                    }
+                }
+            },
+
+            // Custom validation
+            propF: {
+                validator: function (value) {
+                    // Must match one of these strings
+                    return ['success', 'warning', 'danger'].indexOf(value) !== -1
+                }
+            }
+        }
+    })
+    // If prop validation fails Vue will warn you in the console
+    // Props are validated before a component instance is created
+
+    // Apart from the classic types such as numbers, strings, arrays, objects
+    // the type in a prop can also be a constructor function
+
+    function Person (firstName, lastName) {
+        this.firstName = firstName
+        this.lastName = lastName
+    }
+
+    Vue.component('blog-post' {
+        props: {
+            author: Person
+        }
+    })
+</script>
