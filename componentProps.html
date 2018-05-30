@@ -1,0 +1,63 @@
+<navigation-link url="/profile">
+    Your profile
+</navigation-link>
+
+<a v-bind:href="url" class="nav-link">
+    <slot></slot>
+</a>
+
+<navigation-link url="/profile">
+    <span class="fa fa-user"></span>
+    Your profile
+</navigation-link>
+
+<!-- Multiple slots -->
+<div class="container">
+    <header>
+        <slot name="header"></slot>
+    </header>
+    <main>
+        <slot></slot>
+    </main>
+    <footer>
+        <slot name="footer"></slot>
+    </footer>
+</div>
+
+<!-- Providing content to named slots -->
+<base-layout>
+    <template slot="header">
+        <h1>Here is the page title</h1>
+    </template>
+
+    <p>Main content paragraph</p>
+    <p>And a second paragraph</p>
+
+    <template slot="footer">
+        <p>Contact info</p>
+    </template>
+</base-layout>
+
+<!-- slot attribute directily into a normal element -->
+<base-layout>
+  <h1 slot="header">Here might be a page title</h1>
+
+  <p>A paragraph for the main content.</p>
+  <p>And another one.</p>
+
+  <p slot="footer">Here's some contact info</p>
+</base-layout>
+
+<!-- Reusable slots -->
+<ul>
+    <li
+        v-for="todo in todos"
+        v-bind:key="todo.id"
+    >
+    <!-- We have a slot for each todo, passing it the -->
+    <!-- `todo` object as a slot prop.                -->
+    <slot v-bind:todo="todo">
+        {{ todo.text}}
+    </slot>
+    </li>
+</ul>
