@@ -1,0 +1,68 @@
+<google-maps>
+    <google-map-region v-bind:shape="cityBoundaries">
+        <google-map-markers v-bind:places="iceCreamShops"></google-map-markers>
+    </google-map-region>
+</google-maps>
+
+<script>
+    new Vue({
+        data: {
+            foo: 1
+        },
+        computed: {
+            bar: function () {/* ... */}
+        },
+        methods: {
+            baz: function () {/* ... */}
+        }
+    })
+
+    // Accessing root properties
+    this.$root.foo
+    this.$root.bar   // referring to computed properties
+    this.$root.baz() // referring to methods
+
+    // Dependency injection
+    /*
+    new Vue({
+        provide: function () {
+            return: {
+                getMap: this.getMap
+            }
+    })*/
+
+    // Components can recursively invoke themselves in their own template
+    // using the "new" keyword
+    name: 'unique-name-of-my-component'
+</script>
+
+<p>
+    <span>{{ folder.name }}</span>
+    <tree-folder-contents :children="folder.children" />
+</p>
+
+<ul>
+    <li v-for="child in children">
+        <tree-folder v-if="child.children" :folder="child" />
+        <span v-else>{{ child.name }}</span>
+    </li>
+</ul>
+
+<!-- Inline templating -->
+<my-component inline-template>
+    <div>
+        <p>These are compiled as the component's own template.</p>
+        <p>Not parent's transclusion content.</p>
+    </div>
+</my-component>
+
+<!-- x-templates -->
+<script type="text/x-template" id="hello-world-template">
+    <p> Hello hello hello </p>
+</script>
+
+<script>
+    Vue.component('hello-world', {
+        template: '#hello-world-template'
+    })
+</script>
